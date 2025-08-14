@@ -61,7 +61,9 @@ test("Login Page Practice With Valid Creds",async({page})=>
         .nth(0)=>Will be used in case of provided locator returns multiple webelement
         .first()=>Will return first matching webelement
         .last()=> Will return last matching webelement
-     */
+        textContent()=> This method is similar to getText() from selenium,
+                        Returns inner Html or inner text of webelement
+    */
      console.log(await page.locator(".card-body a").nth(0).textContent());
      console.log(await page.locator(".card-body a").first().textContent());
      console.log(await page.locator(".card-body a").last().textContent());
