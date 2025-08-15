@@ -21,6 +21,7 @@ export default defineConfig({
   expect:{
      timeout:40000
   },
+  reporter:'html',
   use: {
     //Default browser on which test will run
     browserName :'chromium',
@@ -30,7 +31,12 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    /* trace ==> It will log all the traces in zip file that you can upload in trace viewer and anylyse all
+    actions performed by automation script*/
+    /*retain-on-failure ==> It will return the traces only in case of failure*/
+    trace: 'retain-on-failure',
+    /* screenshot==> It will take scrrenshot of each and every step */
+    screenshot: 'on',
   },
 });
 

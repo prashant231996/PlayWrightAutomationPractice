@@ -74,7 +74,7 @@ test("Login Page Practice With Valid Creds",async({page})=>
      console.log(allTitles);
 });
 
-test.only("Rahul shetty auth login test",async({page})=>
+test("Rahul shetty auth login test",async({page})=>
 {
     await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
     const userEmail=page.locator("#userEmail");
