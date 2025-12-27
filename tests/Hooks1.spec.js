@@ -22,7 +22,7 @@ test("Home Page Test",async({page})=>
 test("Add Product To Cart Test",async({page})=>
 {
     //Login
-     await page.goto("https://demoblaze.com/");
+    await page.goto("https://demoblaze.com/");
     await page.locator("#login2").click();
     await page.locator("#loginusername").fill("TestPm");
     await page.locator("#loginpassword").fill("TestPm");

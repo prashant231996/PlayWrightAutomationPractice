@@ -16,10 +16,10 @@ export default defineConfig({
   //test directory from which tests will execute
   testDir: './tests',
   /*Explicitly adding timeout for each step(locating element,etc.)Default time out is 30 Sec*/
-  timeout:40000,
+  timeout:30000,
   /*Giving time out for assertions*/
   expect:{
-     timeout:40000
+     timeout:10000
   },
   reporter:'html',
   use: {
@@ -34,9 +34,11 @@ export default defineConfig({
     /* trace ==> It will log all the traces in zip file that you can upload in trace viewer and anylyse all
     actions performed by automation script*/
     /*retain-on-failure ==> It will return the traces only in case of failure*/
-    trace: 'retain-on-failure',
+    trace: "retain-on-failure",
     /* screenshot==> It will take scrrenshot of each and every step */
     screenshot: 'on',
+    /*video==>It will usefull to take video of test case execution*/ 
+    video:"retain-on-failure"
   },
 });
 
