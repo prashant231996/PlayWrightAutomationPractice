@@ -1,5 +1,6 @@
 // @ts-check
 import { chromium, defineConfig, devices } from '@playwright/test';
+import { dot } from 'node:test/reporters';
 
 /**
  * Read environment variables from file.
@@ -22,6 +23,17 @@ export default defineConfig({
      timeout:10000
   },
   reporter:'html',
+  /*Support Of adding multiple built in reporters*/
+  /* reporter:[
+    ['list'],
+    ['line'],
+    ['dot'],
+    ['html'],
+    ['json', { outputFile: 'results.json' }],
+    ['junit', { outputFile: 'results.xml' }]
+   ],*/
+   // Give failing tests 1 retry attempts Or just rerun test once or one more time if test failed
+  retries: 1,
   use: {
     //Default browser on which test will run
     browserName :'chromium',
