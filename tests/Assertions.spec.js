@@ -3,7 +3,7 @@ const {page,test,expect}=require("@playwright/test");
 test("Assertions Test",async({page})=>
 {
     //HARD ASSERTION==> If any assertion got failed it will terminate execution move to next test 
-    //await keyword is basically used to solvve the promises
+    //await keyword is basically used to solve the promises
      await page.goto("https://demo.nopcommerce.com/register");
 
      //1) expect(page).toHaveURL({expected Url});

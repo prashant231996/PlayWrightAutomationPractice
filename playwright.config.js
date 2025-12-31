@@ -16,6 +16,8 @@ import { dot } from 'node:test/reporters';
 export default defineConfig({
   //test directory from which tests will execute
   testDir: './tests',
+  /* Run Tests in file files in Parallel */
+  fullyParallel:false,
   /*Explicitly adding timeout for each step(locating element,etc.)Default time out is 30 Sec*/
   timeout:30000,
   /*Giving time out for assertions*/
