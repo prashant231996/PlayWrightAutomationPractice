@@ -51,18 +51,25 @@ test("Upload Download Excel Validation", async({page})=>
     const desiredRow=await page.getByRole("row").filter({has:fruiteLocator});
     await expect(desiredRow.locator("#cell-4-undefined")).toContainText(updatePrice);
     
-    //  const rows=await page.$$("//div[contains(@class,'rdt_TableBody')]//*[contains(@class,'rdt_TableRow')]");
-    // let fruitePrice;
-    // for(let row of rows)
-    // {
-    //     row.
-    //     const desiredFruiteName=await row.locator("(//div//div)[2]").textCOntent();
-    //     if(desiredFruiteName=="Mango")
-    //     {
-    //        fruitePrice=await row.locator("(//div//div)[4]").textCOntent();
-    //        break;
-    //     }
-    // }
-    // await expect(fruitePrice).tobe("350");
+   const rows=await page.locator("//div[contains(@class,'rdt_TableBody')]//*[contains(@class,'rdt_TableRow')]");
+    let desiredFruiteName;
+    let desiredPrice;
+          for(let i=0;i<await rows.count();i++)
+       {
+        const row=await rows.nth(i);
+        const tds=await row.locator('//div//div');
+        console.log("Count of tds are "+await tds.count());
+
+        for(let j=0;j<await tds.count()-1;j++)
+        {
+            desiredFruiteName=await tds.nth(j).textContent();
+           if(desiredFruiteName==fruiteName)
+           {
+             desiredPrice=await tds.nth(j+2).textContent();
+             break;
+           }
+        }
+       }
+       await expect(await desiredPrice).toBe("350");
 })
 
