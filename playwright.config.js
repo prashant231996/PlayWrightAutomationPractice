@@ -35,7 +35,7 @@ export default defineConfig({
     ['junit', { outputFile: 'results.xml' }]
    ],*/
    // Give failing tests 1 retry attempts Or just rerun test once or one more time if test failed
-  retries: 1,
+  //retries: 1,
   use: {
     //Default browser on which test will run
     browserName :'chromium',
