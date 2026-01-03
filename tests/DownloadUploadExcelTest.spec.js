@@ -5,7 +5,7 @@ const {test,page,expect}=require("@playwright/test");
 
 async function WriteExcel(fruiteName,updatedPrice,change,sheetName,filePath) {
 const workbook=new ExcelJs.Workbook();
-await workbook.xlsx.readFile(filePath)
+await workbook.xlsx.readFile(filePath);
 const worksheet=workbook.getWorksheet(sheetName);
 const output=await readExcel(worksheet,fruiteName);
 const cell=worksheet.getCell(output.row+change.rowChange,output.column+change.columnChange);
@@ -60,7 +60,7 @@ test("Upload Download Excel Validation", async({page})=>
         const tds=await row.locator('//div//div');
         console.log("Count of tds are "+await tds.count());
 
-        for(let j=0;j<await tds.count()-1;j++)
+        for(let j=0;j<await tds.count();j++)
         {
             desiredFruiteName=await tds.nth(j).textContent();
            if(desiredFruiteName==fruiteName)
@@ -70,6 +70,6 @@ test("Upload Download Excel Validation", async({page})=>
            }
         }
        }
-       await expect(await desiredPrice).toBe("350");
+    expect(desiredPrice).toBe("350");
 })
 
