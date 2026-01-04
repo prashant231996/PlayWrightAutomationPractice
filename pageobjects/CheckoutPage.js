@@ -13,7 +13,7 @@ class CheckoutPage
         this.countryDropdownOptions=page.locator(".ta-results");
         this.userNameLabel=page.locator(".user__name label");
         this.userNameInput=page.locator(".user__name input");
-        this.placeHolderBtn=page.locator(".action__submit");
+        this.placeOrderBtn=page.locator(".action__submit");
         this.thankYouMsg=page.locator(".hero-primary");
         this.orderIdElement=page.locator(".em-spacer-1 .ng-star-inserted");
         this.ordersLink=page.locator("button[routerlink*=myorders]");
@@ -48,7 +48,7 @@ class CheckoutPage
     //Validating email Id present over checkut page
     await expect(this.userNameLabel).toHaveText(emailId);
     await expect(await this.userNameInput.nth(0).inputValue()).toContain(emailId);
-    await this.placeHolderBtn.click();
+    await this.placeOrderBtn.click();
     }
 
     async checkOrderPlacedAndGetOrderId()

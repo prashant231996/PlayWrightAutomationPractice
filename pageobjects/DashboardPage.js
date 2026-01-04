@@ -10,6 +10,7 @@ class DashboardPage
         this.products=page.locator(".card-body");
         this.cartBtn=page.locator("[routerlink*='cart']");
         this.cartPageElements=page.locator(".cart li");
+        this.signOutBtn=page.locator("//button[contains(text(),'Sign Out')]");
     }
 
     async searchProduct(productName)
@@ -37,5 +38,10 @@ class DashboardPage
         await this.cartBtn.click();
         //Waiting untill all elements get loaded successfully in cart
         await this.cartPageElements.first().waitFor();
+    }
+
+    async dosignOut()
+    {
+        await this.signOutBtn.click();
     }
 }
