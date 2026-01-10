@@ -52,7 +52,12 @@ export default defineConfig({
     /* screenshot==> It will take scrrenshot of each and every step */
     screenshot: 'only-on-failure',
     /*video==>It will usefull to take video of test case execution*/ 
-    video:"retain-on-failure"
+    video:"off",
+     //Below key value is help to handle SSL Certificate error pop pups/window
+    //If we set ignoreHTTPSErrors as true it will auto accept it.
+    ignoreHTTPSErrors:true,
+    //In permissions below basically we are to allow geolocations, or it handle geolocation pop pups
+    permissions:['geolocation','notifications']
   },
 });
 
