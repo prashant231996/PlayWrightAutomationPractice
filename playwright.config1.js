@@ -56,7 +56,7 @@ export default defineConfig({
     //Default browser on which test will run
     browserName :'webkit',
     //Define do you want to execute in headed or headless mode
-    headless:true,
+    headless:false,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
@@ -68,7 +68,14 @@ export default defineConfig({
     /* screenshot==> It will take scrrenshot of each and every step */
     screenshot: 'only-on-failure',
     /*video==>It will usefull to take video of test case execution*/ 
-    video:"retain-on-failure"
+    video:"retain-on-failure",
+    //Below key value is help to handle SSL Certificate error pop pups/window
+    //If we set ignoreHTTPSErrors as true it will auto accept it.
+    ignoreHTTPSErrors:true,
+    //In permissions below basically we are to allow geolocations, or it handle geolocation pop pups
+    permissions:['geolocation'],
+    //Here we can mentione any mobile device name on which we want to run our test cases
+    //...devices['iPhone 11 Pro']
   }
 },
   {
@@ -89,7 +96,9 @@ export default defineConfig({
     /* screenshot==> It will take scrrenshot of each and every step */
     screenshot: 'only-on-failure',
     /*video==>It will usefull to take video of test case execution*/ 
-    video:"retain-on-failure"
+    video:"retain-on-failure",
+    //Using viewport we can configure launched browser diementions
+    //viewport: { width: 720, height: 720 }
   }
 } 
   ]
