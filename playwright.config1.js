@@ -2,6 +2,19 @@
 import { chromium, defineConfig, devices } from '@playwright/test';
 import { dot } from 'node:test/reporters';
 
+/*
+  CREATION OF CUSTOM CONFIGURATION FILE
+
+  This is helpfull in case of running test scripts on cross browsers.
+  This is helpfull to do multi browser testing.
+  In this file we can configure different combination of browsers data under Projects.
+  ==>CAMMAND TO RUN TEST CASES WITH RESPECTIVE PROJECT CONFIGURATION IS LIKE BELOW
+  ==> npx playwright test Alerts.spec.js --config playwright.config1.js --project Safari
+ **--config ==> It will redirect to custom config file, by default it takes playwright.config.js
+ **--project ==> Here we need to mention project name, with which we want to run our test case
+ ** IF WE NOT PROVIDE ANY PROJECT NAME IT WILL EXECUTE TEST CASES WITH ALL PROJECT DATA MENTIONED UNDER PROJECTS
+*/
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -36,9 +49,12 @@ export default defineConfig({
    ],*/
    // Give failing tests 1 retry attempts Or just rerun test once or one more time if test failed
   //retries: 1,
-  use: {
+  projects: [
+    {
+      name:'Safari',
+       use: {
     //Default browser on which test will run
-    browserName :'chromium',
+    browserName :'webkit',
     //Define do you want to execute in headed or headless mode
     headless:true,
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -53,6 +69,30 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     /*video==>It will usefull to take video of test case execution*/ 
     video:"retain-on-failure"
-  },
+  }
+},
+  {
+    name: "Chrome",
+    use: {
+    //Default browser on which test will run
+    browserName :'chromium',
+    //Define do you want to execute in headed or headless mode
+    headless:false,
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    // baseURL: 'http://localhost:3000',
+
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    /* trace ==> It will log all the traces in zip file that you can upload in trace viewer and anylyse all
+    actions performed by automation script*/
+    /*retain-on-failure ==> It will return the traces only in case of failure*/
+    trace: "retain-on-failure",
+    /* screenshot==> It will take scrrenshot of each and every step */
+    screenshot: 'only-on-failure',
+    /*video==>It will usefull to take video of test case execution*/ 
+    video:"retain-on-failure"
+  }
+} 
+  ]
+ ,
 });
 

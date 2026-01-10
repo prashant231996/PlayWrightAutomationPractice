@@ -1,4 +1,4 @@
-const {test,expect}=require("@playwright/test");
+const {test}=require("@playwright/test");
 import { PageObjectManager } from "../pageobjects/PageObjectManager";
 //JSON ==> String ==> JavaScript Object
 const dataset=JSON.parse(JSON.stringify(require("../testdata/placeOrderTestData.json")));
