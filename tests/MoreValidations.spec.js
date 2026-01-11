@@ -1,5 +1,15 @@
 const {test,expect}=require("@playwright/test");
 
+/*
+  If test file contains inter dependant test cases like test 2 is dependant on test1.
+  After executing test 1 successfully, then only test 2 will run in those case we will use mode as serial.
+  For example if test 1 fail, It will skip test 2 execution as test 2 is dependant on test 1
+*/
+//test.describe.configure({mode:'serial'}); //Serial execution of tests from test files.
+
+//Run Tets cases in prallel from this test file
+test.describe.configure({mode:'parallel'});
+
 test("Handling hidden element", async({page})=>
 {
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
@@ -26,7 +36,7 @@ test("Handling web app pop pups",async({page})=>
      page.locator("#mousehover").hover();
 });
 
-test.only("Handling frames over webpage",async({page})=>
+test("Handling frames over webpage",async({page})=>
 {
      await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
      //.frameLocator(Specify frame locator value)==>Handling iframe using .frameLocator()

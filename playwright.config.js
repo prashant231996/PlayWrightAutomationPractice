@@ -16,7 +16,16 @@ import { dot } from 'node:test/reporters';
 export default defineConfig({
   //test directory from which tests will execute
   testDir: './tests',
-  /* Run Tests in file files in Parallel */
+  /* Prallel Test Execution
+  By default play wright support parallel execution of test cases.
+  And it provides 5 workes to process tests, like by default 5 test files were choose for parallel execution.
+  We can configure workers number via workers property.
+   PARALLEL EXECUTION==> It will execute test files prallalely, but test cases present in test files are still 
+   executed in order only.
+  */
+  //workers:3,
+  /* Run Tests cases present in Test files in Parallel mode==>
+    This we can configure using  fullyParallel property by setting its value to true*/
   fullyParallel:false,
   /*Explicitly adding timeout for each step(locating element,etc.)Default time out is 30 Sec*/
   timeout:30000,
